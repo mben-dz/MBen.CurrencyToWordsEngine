@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💱 CurrToWords
+# 💱 CurrencyToWords
 
 **Convert currency amounts into written words — in multiple languages.**
 

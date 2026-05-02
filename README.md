@@ -149,6 +149,11 @@ No changes to the engine or language rules are needed.
 ## 📸 Screenshot
 <img width="960" height="546" alt="image" src="https://github.com/user-attachments/assets/9ddc3cf9-6370-4df0-80a7-e9d7ba6ec4bf" />
 
+## 📸 Video
+
+
+https://github.com/user-attachments/assets/56bce9eb-17c6-4744-a5ae-744ed4801cef
+
 
 ---
 

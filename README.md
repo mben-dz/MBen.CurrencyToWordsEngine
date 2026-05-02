@@ -56,8 +56,8 @@ Enter any currency amount and instantly see it spelled out in full, natural-lang
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/CurrToWords.git
-cd CurrToWords
+git clone https://github.com/mben-dz/MBen.CurrencyToWordsEngine.git
+cd MBen.CurrencyToWordsEngine
 
 # 2. Open the project in Delphi
 #    File → Open → CurrToWords.dpr

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2026-05-01 22:08:42.812,=F:\2050\Unit1.pas</Transaction>
+    <Transaction>2026-05-01 22:09:44.594,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\CurrToWords.dproj=F:\2050\Project1.dproj</Transaction>
+    <Transaction>2026-05-01 22:10:55.514,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\View\Views\Base.View.pas=</Transaction>
+    <Transaction>2026-05-01 22:11:14.338,=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.pas</Transaction>
+    <Transaction>2026-05-01 22:11:27.298,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\View\Views\Base.View.fmx=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.fmx</Transaction>
+    <Transaction>2026-05-01 22:11:27.298,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\View\Views\Base.View.pas=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.pas</Transaction>
+    <Transaction>2026-05-02 08:03:23.171,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Main.View.pas=</Transaction>
+    <Transaction>2026-05-02 08:03:27.966,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\View\Views\Base.View.pas=</Transaction>
+    <Transaction>2026-05-02 08:03:40.278,=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.pas</Transaction>
+    <Transaction>2026-05-02 08:04:50.810,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\View\Views\Base\Base.View.fmx=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.fmx</Transaction>
+    <Transaction>2026-05-02 08:04:50.810,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\View\Views\Base\Base.View.pas=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.pas</Transaction>
+    <Transaction>2026-05-02 08:06:11.019,=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.pas</Transaction>
+    <Transaction>2026-05-02 08:06:35.570,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Main.View.pas=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.pas</Transaction>
+    <Transaction>2026-05-02 08:06:35.570,F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Main.View.fmx=F:\2032\Tools\ConvertCurrencyToLetters\CurrToWordsOOP\Unit1.fmx</Transaction>
+  </Transactions>
+</BorlandProject>

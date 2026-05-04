@@ -1,69 +1,61 @@
-inherited MainView: TMainView
-  Caption = 'Currency To Words Engine v:1.0.0'
-  Padding.Left = 10.000000000000000000
-  Padding.Top = 10.000000000000000000
-  Padding.Right = 10.000000000000000000
-  Padding.Bottom = 10.000000000000000000
+object MainView: TMainView
+  Left = 0
+  Top = 0
+  Caption = 'UnivCurrencyToWordsEngine'
+  ClientHeight = 264
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   DesignerMasterStyle = 0
   object LayoutTop: TLayout
-    Align = MostTop
-    Position.X = 10.000000000000000000
-    Position.Y = 10.000000000000000000
-    Size.Width = 620.000000000000000000
-    Size.Height = 150.000000000000000000
+    Align = Top
+    Size.Width = 640.000000000000000000
+    Size.Height = 85.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object Label1: TLabel
-      Position.X = 24.000000000000000000
-      Position.Y = 24.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 16.000000000000000000
       Text = 'Language:'
     end
     object cbLanguage: TComboBox
-      Items.Strings = (
-        'English'
-        'French'
-        'Arabic'
-        'German')
-      Position.X = 100.000000000000000000
-      Position.Y = 20.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 40.000000000000000000
       Size.Width = 150.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
-      OnChange = cbLanguageChange
+      OnChange = InputChange
     end
     object Label2: TLabel
-      Position.X = 24.000000000000000000
-      Position.Y = 64.000000000000000000
+      Position.X = 184.000000000000000000
+      Position.Y = 16.000000000000000000
       Text = 'Currency:'
     end
     object cbCurrency: TComboBox
-      Items.Strings = (
-        'USD'
-        'EUR'
-        'DZD')
-      Position.X = 100.000000000000000000
-      Position.Y = 60.000000000000000000
+      Position.X = 184.000000000000000000
+      Position.Y = 40.000000000000000000
       Size.Width = 150.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
-      OnChange = cbCurrencyChange
+      OnChange = InputChange
     end
     object Label3: TLabel
-      Position.X = 24.000000000000000000
-      Position.Y = 104.000000000000000000
+      Position.X = 352.000000000000000000
+      Position.Y = 16.000000000000000000
       Text = 'Amount:'
     end
     object edtAmount: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Text = '1234.56'
-      Position.X = 100.000000000000000000
-      Position.Y = 100.000000000000000000
+      Position.X = 352.000000000000000000
+      Position.Y = 40.000000000000000000
       Size.Width = 150.000000000000000000
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
-      OnChange = edtAmountChange
-      OnChangeTracking = edtAmountChange
+      OnChange = InputChange
+      OnChangeTracking = InputChange
     end
   end
   object MemoResult: TMemo
@@ -71,15 +63,18 @@ inherited MainView: TMainView
     DataDetectorTypes = []
     StyledSettings = [Style, FontColor]
     TextSettings.Font.Family = 'Calibri'
-    TextSettings.Font.Size = 18.000000000000000000
-    Align = Top
-    Position.X = 10.000000000000000000
-    Position.Y = 160.000000000000000000
-    Size.Width = 620.000000000000000000
-    Size.Height = 89.000000000000000000
+    TextSettings.Font.Size = 22.000000000000000000
+    TextSettings.WordWrap = True
+    Align = Client
+    Margins.Left = 16.000000000000000000
+    Margins.Top = 16.000000000000000000
+    Margins.Right = 16.000000000000000000
+    Margins.Bottom = 16.000000000000000000
+    Size.Width = 608.000000000000000000
+    Size.Height = 147.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
-    Viewport.Width = 616.000000000000000000
-    Viewport.Height = 85.000000000000000000
+    Viewport.Width = 604.000000000000000000
+    Viewport.Height = 143.000000000000000000
   end
 end

@@ -18,14 +18,18 @@ uses
   FMX.Edit,
   FMX.ListBox,
   FMX.Layouts,
+  FMX.Memo.Types,
+  FMX.ScrollBox,
+  FMX.Memo,
 //
-  Base.View,
-  API.LanguageRules,
-  API.CurrencyData,
-  API.CurrencyConverter, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
+  API.Types,
+  API.CurrencyRegistry,
+  API.CurrencyConverter,
+  API.LangRules.Factory,
+  API.LanguageRules;
 
 type
-  TMainView = class(TBaseView)
+  TMainView = class(TForm)
     LayoutTop: TLayout;
     cbLanguage: TComboBox;
     cbCurrency: TComboBox;
@@ -34,83 +38,43 @@ type
     Label2: TLabel;
     Label3: TLabel;
     MemoResult: TMemo;
-    procedure edtAmountChange(Sender: TObject);
-    procedure cbLanguageChange(Sender: TObject);
-    procedure cbCurrencyChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure InputChange(Sender: TObject);
   private
     procedure RefreshAll;
-    procedure UpdateLang;
-  public
-    constructor Create(
-            AOwner:       TComponent;
-      const aLangRules:   ILangRules;
-      const aCurrencyDef: TCurrencyDef); override;
   end;
 
 var
   MainView: TMainView;
 
-implementation {$R *.fmx}
+implementation
 
-uses
-  API.LangRules.English,
-  API.LangRules.French,
-  API.LangRules.Arabic,
-  API.LangRules.German;
-
-constructor TMainView.Create(
-        AOwner:       TComponent;
-  const aLangRules:   ILangRules;
-  const aCurrencyDef: TCurrencyDef);
-begin
-  inherited Create(AOwner, aLangRules, aCurrencyDef);
-end;
+{$R *.fmx}
 
 procedure TMainView.FormCreate(Sender: TObject);
-begin
-  cbLanguage.ItemIndex := 0;
-  cbCurrency.ItemIndex := 0;
-  RefreshAll;
-end;
-
-procedure TMainView.UpdateLang;
 var
-  LLangRule:    ILangRules;
-  LCurrencyDef: TCurrencyDef;
+  LCodes: TArray<string>;
+  LCode: string;
 begin
-  case cbLanguage.ItemIndex of
-    0: LLangRule := TEnglishRules.Create;
-    1: LLangRule := TFrenchRules.Create;
-    2: LLangRule := TArabicRules.Create;
-    3: LLangRule := TGermanRules.Create;
-    else LLangRule := TEnglishRules.Create;
-  end;
+  cbLanguage.Items.Clear;
+  cbLanguage.Items.Add('Arabic');
+  cbLanguage.Items.Add('Deutsh');
+  cbLanguage.Items.Add('English');
+  cbLanguage.Items.Add('French');
+  cbLanguage.Items.Add('Hebrew');
+  cbLanguage.ItemIndex := 0;
 
-  case cbCurrency.ItemIndex of
-    0: LCurrencyDef := cUSD;
-    1: LCurrencyDef := cEUR;
-    2: LCurrencyDef := cDZD;
-    else LCurrencyDef := cUSD;
-  end;
-
-  FLangRules   := LLangRule;
-  FCurrencyDef := LCurrencyDef;
+  cbCurrency.Items.Clear;
+  LCodes := TCurrencyRegistry.Instance.GetAllCodes;
+  for LCode in LCodes do
+    cbCurrency.Items.Add(LCode);
+  if cbCurrency.Items.Count > 0 then
+    cbCurrency.ItemIndex := 1;
 
   RefreshAll;
 end;
 
-procedure TMainView.cbLanguageChange(Sender: TObject);
-begin
-  UpdateLang;
-end;
-
-procedure TMainView.cbCurrencyChange(Sender: TObject);
-begin
-  UpdateLang;
-end;
-
-procedure TMainView.edtAmountChange(Sender: TObject);
+procedure TMainView.InputChange(Sender: TObject);
 begin
   RefreshAll;
 end;
@@ -118,11 +82,29 @@ end;
 procedure TMainView.RefreshAll;
 var
   LAmount: Currency;
+  LLang: TLangCode;
+  LCurrencyCode: string;
+  LDef: TCurrencyDef;
+  LRules: ILangRules;
 begin
+  if cbLanguage.ItemIndex < 0 then Exit;
+  if cbCurrency.ItemIndex < 0 then Exit;
+
+  LLang         := TLangCode(cbLanguage.ItemIndex);
+  LCurrencyCode := cbCurrency.Items[cbCurrency.ItemIndex];
+  LDef          := TCurrencyRegistry.Instance
+                     .GetCurrency(LCurrencyCode);
+
+  if not Assigned(LDef) then Exit;
+
   if TryStrToCurr(edtAmount.Text, LAmount) then
   begin
-    MemoResult.Text := TCurrencyConverter.CurrencyToWords(LAmount, FLangRules, FCurrencyDef);
-    if FLangRules.IsRTL then
+    MemoResult.Text := TCurrencyConverter
+                         .CurrencyToWords(LAmount, LLang, LDef);
+
+    LRules := TLangRulesFactory.GetRules(LLang);
+
+    if LRules.IsRTL then
       MemoResult.TextSettings.HorzAlign := TTextAlign.Trailing
     else
       MemoResult.TextSettings.HorzAlign := TTextAlign.Leading;
